@@ -1,0 +1,285 @@
+﻿# See the documentation on the wiki to learn how to edit this file.
+#-------------------------------
+[084] # Shower Block MALE
+Land,15
+    70,RATTATA_1,6,8
+    30,GRUBBIN,6,8
+Water,10
+    100,MAGIKARP,6,8
+OldRod,100
+    100,MAGIKARP,6,8
+#-------------------------------
+[085] # Shower Block FEMALE
+Land,15
+    70,RATTATA_1,6,8
+    30,GRUBBIN,6,8
+Water,10
+    100,MAGIKARP,6,8
+OldRod
+    100,MAGIKARP,6,8
+#-------------------------------
+[101] # Cellblock A 
+Land,13
+    40,POOCHYENA,3,4
+    25,SHROODLE,3,4
+    20,SHROOMISH,3,4
+    15,BUDEW,3,4
+LandNight,13
+    40,POOCHYENA,3,4
+    40,ZUBAT,3,4
+    20,SHROOMISH,3,4
+OldRod
+    85,MAGIKARP,3,5
+    15,HORSEA,3,5
+Water,10
+    85,MAGIKARP,3,5
+    15,HORSEA,3,5
+#-------------------------------
+[102] # Transfer Route A
+Land,11
+    30,EKANS,3,6
+    25,ROOKIDEE,3,6
+    20,PICHU,4,6
+    15,YAMPER,4,6
+    10,BUDEW,4,6
+LandNight,11
+    35,EKANS,3,4
+    30,ZUBAT,3,4
+    20,POOCHYENA,3,4
+    15,ROOKIDEE,3,4
+#-------------------------------
+[103] # Mess Hall Line
+Land,11
+    25,EKANS,4,6
+    25,RATTATA_1,4,6
+    25,SHROODLE,4,6
+    15,ROOKIDEE,4,6
+    10,VENIPEDE,4,6
+#-------------------------------
+[107] # Yard (Zone A)
+Land,11
+    25,SHINX,12,14
+    25,STARAVIA,14,15
+    15,LITLEO,12,15
+    10,ROSELIA,12,15
+    5,LUXIO,15
+    5,RALTS,12,14
+    1,KIRLIA,15
+OldRod
+    50,MAGIKARP,10,12
+    30,DUCKLETT,12,15
+    20,DEWPIDER,12,15
+Water,2
+    50,MAGIKARP,10,12
+    30,DUCKLETT,12,15
+    20,DEWPIDER,12,15
+#-------------------------------
+[114] # Courtyard
+Land,10
+    25,PURRLOIN,9,12
+    25,ROOKIDEE,9,12
+    20,STARLY,9,12
+    15,BLIPBUG,9,12
+    10,TANGELA,9,12
+    5,TIMBURR,9,12
+#-------------------------------
+[117] # Transfer Route B
+Land,11
+    25,LILLIPUP,14,17
+    20,INKAY,14,17
+    20,SNOM,14,17
+    15,GLIGAR,14,17
+    5,HERDIER,16,17
+LandNight,11
+    25,INKAY,14,17
+    20,MISDREAVUS,14,17
+    20,SNOM,14,17
+    15,GLIGAR,14,17
+    10,HONEDGE,14,17
+Water,10
+    40,HORSEA,14,17
+    30,SKRELP,14,17
+OldRod,10
+    40,HORSEA,14,17
+    30,SKRELP,14,17
+#-------------------------------
+[118] # Cellblock B
+Land,11
+    20,NIDORINA,5
+#-------------------------------
+[119] # Maintenance Access Lane
+Land,11
+    20,MEDITITE,15,17
+    20,POOCHYENA,15,17
+    20,SNOM,15,17
+    15,CETODDLE,15,17
+    15,KOFFING,15,17
+    5,MIGHTYENA,18
+#-------------------------------
+[129] # Generator Bay
+Cave,7
+    30,JOLTIK,16,17
+    15,TYNAMO,16,17
+    5,KLINK,16,17
+#-------------------------------
+[130] # Maintenance Cliff Cave
+Cave,7
+    40,GEODUDE,15,17
+    20,CETODDLE,15,17
+    15,ROGGENROLA,15,17
+    10,ONIX,15,17
+    5,GIBLE,15,17
+#-------------------------------
+[133] # Forestry
+Land,11
+    20,TANGELA,16,19
+    15,DOTTLER,16,19
+    10,APPLIN,16,19
+    5,SNIVY,16,19
+LandDay,11
+    15,PETILIL,16,19
+    20,TANGELA,16,19
+    15,DOTTLER,16,19
+    10,APPLIN,16,19
+    5,SNIVY,16,19
+LandNight,11
+    20,TANGELA,16,19
+    10,APPLIN,16,19
+    5,SNIVY,16,19
+    30,GASTLY,16,19
+#-------------------------------
+[134] # Zone A Perimeter Walkway - Lower
+Land,11
+    25,SKITTY,18,21
+    20,MANKEY,18,21
+    15,ROCKRUFF,18,21
+    15,STUNKY,18,21
+    10,HAPPINY,18,21
+#-------------------------------
+[135] # Zone A Perimeter Walkway - Upper
+Land,11
+    25,GLAMEOW,18,21
+    20,MANKEY,18,21
+    15,ROCKRUFF,18,21
+    15,STUNKY,18,21
+    10,AZURILL,18,21
+#-------------------------------
+[136] # Yard (Zone B)
+Land,11
+    30,PONYTA,18,21
+    20,SNORUNT,18,21
+    20,VULPIX,18,21
+    15,ELECTRIKE,18,21
+    15,FARFETCHD_1,18,21
+    15,FLETCHLING,18,21
+    15,PIKACHU,18,21
+    5,FLETCHINDER,20,22
+Water,2
+    20,CORPHISH,18,21
+    20,TYMPOLE,18,21
+    10,TIRTOUGA,18,21
+GoodRod,2
+    20,CORPHISH,18,21
+    20,TYMPOLE,18,21
+    10,TIRTOUGA,18,21
+OldRod,2
+    20,CORPHISH,12,16
+    20,TYMPOLE,12,16
+#-------------------------------
+[138] # Infirmary Wing
+Land,11
+    20,NIDORANfE,22,25
+    20,NIDORANmA,22,25
+    20,SHELLOS,22,25
+    15,FLITTLE,22,25
+    15,INKAY,22,25
+    10,HAPPINY,22,25
+    5,CHANSEY,23,26
+Water,2
+    30,SKRELP,22,25
+    20,MARILL,22,25
+    10,FINIZEN,22,25
+GoodRod,12
+    30,SKRELP,22,25
+    20,MARILL,22,25
+    5,FINIZEN,22,25
+OldRod,12
+    30,SKRELP,15,18
+    20,MARILL,15,18
+#-------------------------------
+[148] # Service Lift
+Land,11
+    25,BLITZLE,18,21
+    20,YAMPER,18,21
+    10,AXEW,18,21
+    5,CHARCADET,18,21
+    5,DREEPY,18,21
+    5,EEVEE,18,21
+Water,11
+    20,DEWPIDER,18,21
+    5,TOTODILE,18,21
+GoodRod,10
+    50,HORSEA,18,21
+    10,TOTODILE,18,21
+    1,FEEBAS,18,21
+OldRod,10
+    50,HORSEA,15,18
+    40,MAGIKARP,15,18
+LandNight,11
+    25,BLITZLE,18,21
+    20,YAMPER,18,21
+    10,AXEW,18,21
+    5,CHARCADET,18,21
+    15,DREEPY,18,21
+    5,EEVEE,18,21
+#-------------------------------
+[151] # Forestry Clearing
+Land,11
+    20,TANGELA,16,19
+    15,DOTTLER,16,19
+    5,SNIVY,16,19
+    10,APPLIN,16,19
+Water,11
+    40,MAGIKARP,16,19
+    20,TYMPOLE,16,19
+OldRod,10
+    40,MAGIKARP,12,15
+    20,TYMPOLE,12,15
+LandDay,11
+    20,TANGELA,16,19
+    15,DOTTLER,16,19
+    5,SNIVY,16,19
+    15,PETILIL,16,19
+    10,APPLIN,16,19
+LandNight,11
+    20,TANGELA,16,19
+    5,SNIVY,16,19
+    30,GASTLY,16,19
+    30,GASTLY,16,19
+#-------------------------------
+[160] # Chapel Cellar
+Cave,5
+    40,DUSKULL,20,24
+    30,MISDREAVUS,20,24
+    20,NINCADA,20,24
+    15,GASTLY,20,24
+    5,HAUNTER,25
+#-------------------------------
+[162] # Icy Cavern 1F
+Cave,6
+    30,CETODDLE,19,22
+    25,SNORUNT,19,22
+    10,BERGMITE,19,22
+#-------------------------------
+[166] # Icy Cavern 2F
+Cave,6
+    30,CETODDLE,19,22
+    25,SNORUNT,19,22
+    10,BERGMITE,19,22
+#-------------------------------
+[167] # Icy Cavern 3F
+Cave,6
+    30,CETODDLE,19,22
+    25,SNORUNT,19,22
+    10,BERGMITE,19,22
+    5,AMAURA,19,22

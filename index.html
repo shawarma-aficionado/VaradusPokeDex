@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conviction Pokédex | Database Editor</title>
+  <meta name="description"
+    content="An advanced Pokédex and database manager for Pokémon Conviction. Re-arrange available Pokémon, check type defenses, and coverage.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <!-- Theme Selector -->
+  <div class="theme-selector-container">
+    <i class="fa-solid fa-palette"></i>
+    <select id="theme-select" onchange="changeTheme(this.value)">
+      <option value="default">Default</option>
+      <option value="ninthecho">Ninth Echo</option>
+      <option value="bluestatic">Blue Static</option>
+      <option value="thestate">The State</option>
+    </select>
+  </div>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo-full">
+          <img src="assets/logo/Conviction_Logo_Full.png" alt="Pokémon Conviction Logo">
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li>
+            <a href="#" class="nav-item active" data-tab="pokedex">
+              <img src="assets/sidebar/menu_pokedex.png" alt="" class="nav-icon"> PokéDex
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-item" data-tab="movedex">
+              <img src="assets/sidebar/menu_moves.png" alt="" class="nav-icon"> MoveDex
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item" data-tab="abilitydex">
+              <img src="assets/sidebar/menu_ability.png" alt="" class="nav-icon"> AbilityDex
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item" data-tab="typechart">
+              <img src="assets/sidebar/menu_typechart.png" alt="" class="nav-icon"> Type Chart
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item" data-tab="dbeditor">
+              <img src="assets/sidebar/menu_db.png" alt="" class="nav-icon"> DB Editor
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>Varadus Pokédex &mdash; built by Samudranara</p>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+
+      <!-- ================= POKEDEX TAB ================= -->
+      <section id="pokedex" class="tab-panel active">
+        <header class="page-header">
+          <div>
+            <h1 class="page-title">Varadus PokéDex</h1>
+          </div>
+          <div class="view-toggle">
+            <button class="view-toggle-btn active" id="btn-view-grid" onclick="setDexView('grid')">
+              <i class="fa-solid fa-grip"></i> Grid
+            </button>
+            <button class="view-toggle-btn" id="btn-view-table" onclick="setDexView('table')">
+              <i class="fa-solid fa-list"></i> Table
+            </button>
+          </div>
+        </header>
+
+        <!-- Filters Bar -->
+        <div class="filters-bar">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="poke-search" class="search-input" placeholder="Search by name or number..."
+              oninput="filterPokemon()">
+          </div>
+
+          <select id="filter-type" class="select-filter" onchange="filterPokemon()">
+            <option value="">All Types</option>
+            <option value="Normal">Normal</option>
+            <option value="Fire">Fire</option>
+            <option value="Water">Water</option>
+            <option value="Grass">Grass</option>
+            <option value="Electric">Electric</option>
+            <option value="Ice">Ice</option>
+            <option value="Fighting">Fighting</option>
+            <option value="Poison">Poison</option>
+            <option value="Ground">Ground</option>
+            <option value="Flying">Flying</option>
+            <option value="Psychic">Psychic</option>
+            <option value="Bug">Bug</option>
+            <option value="Rock">Rock</option>
+            <option value="Ghost">Ghost</option>
+            <option value="Dragon">Dragon</option>
+            <option value="Steel">Steel</option>
+            <option value="Fairy">Fairy</option>
+            <option value="Dark">Dark</option>
+          </select>
+
+          <select id="filter-sort" class="select-filter" onchange="filterPokemon()">
+            <option value="id-asc">Dex No. (Lowest First)</option>
+            <option value="id-desc">Dex No. (Highest First)</option>
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="bst-desc">Base Stat Total (High-Low)</option>
+            <option value="bst-asc">Base Stat Total (Low-High)</option>
+          </select>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="pokemon-grid" id="pokemon-grid-container">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Table Container (Hidden by default) -->
+        <div class="dex-table-wrapper" id="pokemon-table-container" style="display: none;">
+          <table class="dex-table">
+            <thead>
+              <tr>
+                <th class="col-stat">No.</th>
+                <th>Name</th>
+                <th class="col-type">Type</th>
+                <th class="col-stat">HP</th>
+                <th class="col-stat">Atk</th>
+                <th class="col-stat">Def</th>
+                <th class="col-stat">SpA</th>
+                <th class="col-stat">SpD</th>
+                <th class="col-stat">Spe</th>
+                <th class="col-stat">BST</th>
+              </tr>
+            </thead>
+            <tbody id="pokemon-table-body">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= MOVEDEX TAB ================= -->
+      <section id="movedex" class="tab-panel">
+        <header class="page-header">
+          <div>
+            <h1 class="page-title">Move Repository</h1>
+          </div>
+        </header>
+
+        <div class="filters-bar">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="move-search" class="search-input" placeholder="Search moves..."
+              oninput="filterMoves()">
+          </div>
+
+          <select id="filter-move-type" class="select-filter" onchange="filterMoves()">
+            <option value="">All Types</option>
+            <option value="Normal">Normal</option>
+            <option value="Fire">Fire</option>
+            <option value="Water">Water</option>
+            <option value="Grass">Grass</option>
+            <option value="Electric">Electric</option>
+            <option value="Ice">Ice</option>
+            <option value="Fighting">Fighting</option>
+            <option value="Poison">Poison</option>
+            <option value="Ground">Ground</option>
+            <option value="Flying">Flying</option>
+            <option value="Psychic">Psychic</option>
+            <option value="Bug">Bug</option>
+            <option value="Rock">Rock</option>
+            <option value="Ghost">Ghost</option>
+            <option value="Dragon">Dragon</option>
+            <option value="Steel">Steel</option>
+            <option value="Fairy">Fairy</option>
+            <option value="Dark">Dark</option>
+          </select>
+
+          <select id="filter-move-cat" class="select-filter" onchange="filterMoves()">
+            <option value="">All Categories</option>
+            <option value="Physical">Physical</option>
+            <option value="Special">Special</option>
+            <option value="Status">Status</option>
+          </select>
+        </div>
+
+        <div class="dex-table-wrapper">
+          <table class="dex-table">
+            <thead>
+              <tr>
+                <th class="col-name">Move Name</th>
+                <th class="col-type">Type</th>
+                <th class="col-category">Category</th>
+                <th class="col-stat">Power</th>
+                <th class="col-stat">Accuracy</th>
+                <th class="col-stat col-pp">PP</th>
+                <th class="col-desc">Description</th>
+              </tr>
+            </thead>
+            <tbody id="moves-table-body">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= ABILITYDEX TAB ================= -->
+      <section id="abilitydex" class="tab-panel">
+        <header class="page-header">
+          <div>
+            <h1 class="page-title">Ability Log</h1>
+          </div>
+        </header>
+
+        <div class="filters-bar">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="ability-search" class="search-input" placeholder="Search abilities..."
+              oninput="filterAbilities()">
+          </div>
+        </div>
+
+        <div class="dex-table-wrapper">
+          <table class="dex-table">
+            <thead>
+              <tr>
+                <th style="width: 250px;">Ability</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody id="abilities-table-body">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= TYPE CHART TAB ================= -->
+      <section id="typechart" class="tab-panel">
+        <header class="page-header">
+          <div>
+            <h1 class="page-title">Type Grid</h1>
+          </div>
+        </header>
+
+        <div class="dex-table-wrapper" style="overflow-x: auto;">
+          <table class="typechart-grid" id="typechart-table">
+            <!-- Populated by JS -->
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= DATABASE EDITOR TAB ================= -->
+      <section id="dbeditor" class="tab-panel">
+        <header class="page-header">
+          <div>
+            <h1 class="page-title">Database Editor</h1>
+          </div>
+        </header>
+
+        <!-- Auth Area (Shown if logged out) -->
+        <div id="editor-auth-container" class="dashboard-card auth-card" style="max-width: 480px; margin: 20px auto; padding: 32px;">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Editor Interface (Shown if Admin) -->
+        <div id="editor-main-container" class="dashboard-card" style="display: none; padding: 32px;">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Denied Access Area (Shown if Standard User) -->
+        <div id="editor-denied-container" class="dashboard-card" style="display: none; max-width: 550px; margin: 20px auto; text-align: center; padding: 40px;">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+
+
+    </main>
+  </div>
+
+  <!-- ================= MODAL: POKEMON DETAIL VIEW ================= -->
+  <div class="modal-overlay" id="poke-detail-modal" onclick="closePokeDetailModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closePokeDetailModal(event)">&times;</button>
+
+      <div class="poke-details-grid">
+        <!-- Visuals / Left side -->
+        <div class="poke-visuals">
+          <div class="poke-title-number" id="detail-number">#001</div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin: 4px 0 12px; flex-wrap: wrap;">
+            <h2 class="poke-title-name" id="detail-name" style="margin: 0;">Bulbasaur</h2>
+            <div class="type-badge-container" id="detail-types" style="width: auto; margin: 0; display: inline-flex; gap: 6px;">
+              <!-- Badges -->
+            </div>
+          </div>
+
+          <img src="" alt="" class="poke-details-image" id="detail-image">
+
+          <div class="poke-desc" id="detail-description">
+            --
+          </div>
+
+          <div class="poke-specs">
+            <div class="spec-box">
+              <div class="spec-title">Height</div>
+              <div class="spec-val" id="detail-height">0.7 m</div>
+            </div>
+            <div class="spec-box">
+              <div class="spec-title">Weight</div>
+              <div class="spec-val" id="detail-weight">6.9 kg</div>
+            </div>
+            <div class="spec-box">
+              <div class="spec-title">Egg Group</div>
+              <div class="spec-val" id="detail-egg-groups">Monster</div>
+            </div>
+            <div class="spec-box">
+              <div class="spec-title">Encounters</div>
+              <div class="spec-val" id="detail-encounters">Not found in wild</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info / Right side -->
+        <div style="display: flex; flex-direction: column;">
+          <div class="poke-info-tabs">
+            <div class="info-tab active" data-tab-content="stats" onclick="switchDetailTab('stats')">Base Stats</div>
+            <div class="info-tab" data-tab-content="moves" onclick="switchDetailTab('moves')">Movepool</div>
+            <div class="info-tab" data-tab-content="evolutions" onclick="switchDetailTab('evolutions')">Evolutions</div>
+          </div>
+
+          <!-- Base Stats Section -->
+          <div class="info-content active" id="detail-content-stats">
+            <div class="stats-section" id="detail-stats-container">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+
+          <!-- Moves Selection -->
+          <div class="info-content" id="detail-content-moves" style="max-height: 450px; overflow-y: auto;">
+            <h4 style="font-size: 14px; margin-bottom: 8px;">Level Up Moves</h4>
+            <table class="move-table">
+              <thead>
+                <tr>
+                  <th class="col-stat">Lvl</th>
+                  <th class="col-name">Move</th>
+                  <th class="col-type">Type</th>
+                  <th class="col-category">Category</th>
+                  <th class="col-stat">Pwr</th>
+                  <th class="col-stat">Acc</th>
+                </tr>
+              </thead>
+              <tbody id="detail-moves-levelup">
+                <!-- Levels -->
+              </tbody>
+            </table>
+
+            <h4 style="font-size: 14px; margin-top: 20px; margin-bottom: 8px;">TM / HM Learnset</h4>
+            <table class="move-table">
+              <thead>
+                <tr>
+                  <th class="col-name">Move</th>
+                  <th class="col-type">Type</th>
+                  <th class="col-category">Category</th>
+                  <th class="col-stat">Pwr</th>
+                  <th class="col-stat">Acc</th>
+                </tr>
+              </thead>
+              <tbody id="detail-moves-tm">
+                <!-- TMs -->
+              </tbody>
+            </table>
+
+            <h4 style="font-size: 14px; margin-top: 20px; margin-bottom: 8px;">Egg Learnset</h4>
+            <table class="move-table">
+              <thead>
+                <tr>
+                  <th class="col-name">Move</th>
+                  <th class="col-type">Type</th>
+                  <th class="col-category">Category</th>
+                  <th class="col-stat">Pwr</th>
+                  <th class="col-stat">Acc</th>
+                </tr>
+              </thead>
+              <tbody id="detail-moves-egg">
+                <!-- Eggs -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Evolutions Selection -->
+          <div class="info-content" id="detail-content-evolutions">
+            <div class="evo-chain" id="detail-evo-chain">
+              <!-- Calculated and dynamically drawn -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- ================= MODAL: MOVE DETAIL VIEW ================= -->
+  <div class="modal-overlay" id="move-detail-modal" onclick="closeMoveDetailModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeMoveDetailModal(event)">&times;</button>
+
+      <div style="text-align: center; margin-bottom: 24px;">
+        <h2 class="poke-title-name" id="move-detail-name" style="margin: 0 0 10px;">--</h2>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <div id="move-detail-type"></div>
+          <div id="move-detail-category"></div>
+        </div>
+      </div>
+
+      <!-- Move Specs -->
+      <div class="poke-specs" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+        <div class="spec-box" style="text-align: center;">
+          <div class="spec-title">Power</div>
+          <div class="spec-val" id="move-detail-power">--</div>
+        </div>
+        <div class="spec-box" style="text-align: center;">
+          <div class="spec-title">Accuracy</div>
+          <div class="spec-val" id="move-detail-accuracy">--</div>
+        </div>
+        <div class="spec-box" style="text-align: center;">
+          <div class="spec-title">PP</div>
+          <div class="spec-val" id="move-detail-pp">--</div>
+        </div>
+      </div>
+
+      <div class="spec-box" style="margin-bottom: 24px; border-color: var(--border-color);">
+        <div class="spec-title">Description</div>
+        <p id="move-detail-description" style="line-height: 1.5; font-size: 14px; margin-top: 4px; color: var(--text-secondary);"></p>
+      </div>
+
+      <div style="display: flex; flex-direction: column;">
+        <div class="poke-info-tabs" id="move-learner-tabs">
+          <div class="info-tab active" data-tab-content="levelup" onclick="switchMoveLearnerTab('levelup')">Level Up (<span id="count-levelup">0</span>)</div>
+          <div class="info-tab" data-tab-content="tm" onclick="switchMoveLearnerTab('tm')">TM / HM (<span id="count-tm">0</span>)</div>
+          <div class="info-tab" data-tab-content="egg" onclick="switchMoveLearnerTab('egg')">Egg Moves (<span id="count-egg">0</span>)</div>
+        </div>
+
+        <!-- Learners List Content Panels -->
+        <div class="info-content active" id="move-learner-levelup" style="max-height: 380px; overflow-y: auto; padding-top: 8px;">
+          <div class="learner-grid" id="learner-list-levelup"></div>
+        </div>
+
+        <div class="info-content" id="move-learner-tm" style="max-height: 380px; overflow-y: auto; padding-top: 8px;">
+          <div class="learner-grid" id="learner-list-tm"></div>
+        </div>
+
+        <div class="info-content" id="move-learner-egg" style="max-height: 380px; overflow-y: auto; padding-top: 8px;">
+          <div class="learner-grid" id="learner-list-egg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ================= TOAST SYSTEM ================= -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check" id="toast-icon"></i>
+    <div id="toast-msg">Database loaded successfully!</div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/db-manager.js?v=1.0.2"></script>
+  <script src="js/app.js?v=1.0.2"></script>
+</body>
+
+</html>
