@@ -1593,4 +1593,62 @@ body.theme-thestate .sidebar-footer {
     background-size: cover !important;
     background-position: center !important;
   }
+
+  /* 3-Column Catalogue Pokemon Card Layout for Mobile */
+  .pokemon-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .pokemon-card {
+    padding: 12px 6px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .pokemon-card-id {
+    top: 6px !important;
+    right: 8px !important;
+    font-size: 8px !important;
+  }
+
+  .pokemon-card-image {
+    width: 64px !important;
+    height: 64px !important;
+    margin: 6px 0 !important;
+  }
+
+  .pokemon-card-name {
+    font-size: 11px !important;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .pokemon-card-info-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding-top: 6px !important;
+    margin-top: 6px !important;
+  }
+
+  .pokemon-card-info-row > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+  }
+
+  .pokemon-card-bst {
+    font-size: 8px !important;
+    padding: 1px 6px !important;
+  }
+
+  .pokemon-card .type-badge-container {
+    gap: 2px !important;
+    justify-content: center !important;
+  }
+
+  .pokemon-card img.type-badge-img {
+    height: 12px !important;
+  }
 }
