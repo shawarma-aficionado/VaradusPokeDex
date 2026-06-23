@@ -1531,3 +1531,66 @@ body.theme-thestate .sidebar-footer {
   color: var(--text-secondary);
   white-space: nowrap;
 }
+
+/* Mobile Back Bar */
+.mobile-back-bar {
+  display: none;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100% !important;
+    position: relative !important;
+    height: auto !important;
+    min-height: 100vh;
+    box-shadow: none !important;
+    padding: 60px 20px 24px !important;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+    padding: 20px !important;
+    width: 100% !important;
+    min-height: 100vh;
+  }
+
+  /* State Management: Active tab toggles screen views */
+  .app-container.show-menu .sidebar {
+    display: flex !important;
+  }
+  .app-container.show-menu .main-content {
+    display: none !important;
+  }
+
+  .app-container.show-page .sidebar {
+    display: none !important;
+  }
+  .app-container.show-page .main-content {
+    display: block !important;
+  }
+
+  .mobile-back-bar {
+    display: flex;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  .theme-selector-container {
+    top: 16px;
+    right: 16px;
+    padding: 6px 12px;
+  }
+
+  /* Override theme backgrounds on mobile to cover full viewport since sidebar is hidden */
+  body.theme-ninthecho,
+  body.theme-bluestatic,
+  body.theme-thestate {
+    background-size: cover !important;
+    background-position: center !important;
+  }
+}

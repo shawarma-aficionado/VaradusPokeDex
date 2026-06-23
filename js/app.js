@@ -62,6 +62,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // Load Database and Initialize
+  const appContainer = document.querySelector(".app-container");
+  if (appContainer) {
+    appContainer.classList.add("show-menu");
+  }
+
   await initApp();
 });
 
@@ -149,6 +154,12 @@ function switchTab(tabId) {
 
   if (tabId === 'dbeditor') {
     checkAuthAndToggleView();
+  }
+
+  const appContainer = document.querySelector(".app-container");
+  if (appContainer) {
+    appContainer.classList.remove("show-menu");
+    appContainer.classList.add("show-page");
   }
 }
 
@@ -1348,4 +1359,12 @@ function switchMoveLearnerTab(tabKey) {
       panel.classList.remove("active");
     }
   });
+}
+
+function backToMenu() {
+  const appContainer = document.querySelector(".app-container");
+  if (appContainer) {
+    appContainer.classList.remove("show-page");
+    appContainer.classList.add("show-menu");
+  }
 }
