@@ -1371,6 +1371,67 @@ body.theme-thestate .sidebar-footer {
   border-top-color: rgba(255, 255, 255, 0.15);
 }
 
+/* Mobile Back to Menu Button Theme Customization */
+.mobile-back-bar .btn-secondary {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: var(--text-primary);
+  text-shadow: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
+}
+
+.mobile-back-bar .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Ninth Echo Theme - Back to Menu button */
+body.theme-ninthecho .mobile-back-bar .btn-secondary {
+  background: rgba(158, 28, 54, 0.55) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(158, 28, 54, 0.3);
+}
+
+body.theme-ninthecho .mobile-back-bar .btn-secondary:hover {
+  background: rgba(158, 28, 54, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 4px 15px rgba(158, 28, 54, 0.5);
+}
+
+/* Blue Static Theme - Back to Menu button */
+body.theme-bluestatic .mobile-back-bar .btn-secondary {
+  background: rgba(48, 131, 198, 0.55) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(48, 131, 198, 0.3);
+}
+
+body.theme-bluestatic .mobile-back-bar .btn-secondary:hover {
+  background: rgba(48, 131, 198, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 4px 15px rgba(48, 131, 198, 0.5);
+}
+
+/* The State Theme - Back to Menu button */
+body.theme-thestate .mobile-back-bar .btn-secondary {
+  background: rgba(37, 36, 60, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(37, 36, 60, 0.4);
+}
+
+body.theme-thestate .mobile-back-bar .btn-secondary:hover {
+  background: rgba(37, 36, 60, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 4px 15px rgba(37, 36, 60, 0.6);
+}
+
+
 /* Type Chart Grid Table styling */
 .typechart-grid {
   table-layout: fixed;
